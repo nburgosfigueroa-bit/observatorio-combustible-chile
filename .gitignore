@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Data / analytical files
+data/raw/
+data/processed/
+database/
+*.duckdb
+*.duckdb.wal
+*.parquet
+*.csv
+*.csv.bz2
+*.zip
+
+# Outputs
+outputs/
+
+# Power BI temporary files
+*.pbit.tmp
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
