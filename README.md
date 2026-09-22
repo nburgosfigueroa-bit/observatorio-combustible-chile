@@ -70,6 +70,8 @@ Datos CNE (.csv.bz2)
       Dashboard interactivo
 ```
 
+Ver: [Arquitectura del proyecto](docs/arquitectura.md)
+
 ## Stack tecnológico
 
 - **Python** — ETL, validaciones y automatización
@@ -121,7 +123,11 @@ Principales entidades:
 - `fact_premium_marca`
 - `fact_variacion_yoy`
 
-Ver: [Modelo de datos](docs/modelo_datos.md)
+Documentación:
+- [Modelo de datos](docs/modelo_datos.md)
+- [Diccionario de datos](docs/diccionario_datos.md)
+- [Medidas DAX](docs/medidas_dax.md)
+- [Dashboard Power BI](docs/dashboard_powerbi.md)
 
 ## Calidad de datos
 
@@ -144,7 +150,7 @@ Ver: [Calidad de datos](docs/calidad_datos.md)
 
 ```text
 observatorio-combustible-chile/
-├── assets/                 # capturas del dashboard
+├── assets/                 # material visual del dashboard
 ├── data/                   # documentación de fuentes, no datos masivos
 ├── docs/                   # metodología y documentación técnica
 ├── powerbi/                # documentación del modelo Power BI
@@ -155,6 +161,20 @@ observatorio-combustible-chile/
 ├── requirements.txt
 └── README.md
 ```
+
+## Documentación rápida
+
+- [Fuentes](docs/fuentes.md)
+- [Metodología ETL](docs/metodologia.md)
+- [Arquitectura](docs/arquitectura.md)
+- [Calidad de datos](docs/calidad_datos.md)
+- [Modelo de datos](docs/modelo_datos.md)
+- [Diccionario de datos](docs/diccionario_datos.md)
+- [Dashboard Power BI](docs/dashboard_powerbi.md)
+- [Medidas DAX](docs/medidas_dax.md)
+- [Autoservicio vs. Asistido](docs/analisis_autoservicio.md)
+- [Roadmap](docs/roadmap.md)
+- [Estado actual](PROJECT_STATUS.md)
 
 ## Roadmap
 
