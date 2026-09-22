@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Observatorio de Combustibles Chile - análisis público de precios históricos CNE 2012-2026." />
+  <title>Observatorio de Combustibles Chile</title>
+  <style>
+    :root{
+      --bg:#061c2c; --panel:#0a2b40; --cyan:#20e6f2; --gold:#e2a900;
+      --text:#f7fbfd; --muted:#a8c4d2; --line:#17536b;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#041521,#08283a);color:var(--text)}
+    .wrap{max-width:1500px;margin:auto;padding:24px}
+    header{border-bottom:1px solid var(--cyan);padding:8px 0 20px}
+    h1{margin:0;font-size:clamp(28px,4vw,56px);letter-spacing:.04em}
+    h1 span{color:var(--cyan)}
+    .sub{color:var(--muted);margin-top:8px}
+    .hero{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;margin:22px 0}
+    .card{background:rgba(10,43,64,.82);border:1px solid rgba(32,230,242,.18);border-radius:14px;padding:20px}
+    .card h2{color:var(--cyan);margin-top:0}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+    .kpi{background:#071f30;border:1px solid var(--line);padding:16px;border-radius:10px}
+    .kpi b{display:block;font-size:24px;color:white}
+    .kpi small{color:var(--muted)}
+    .pbi{margin-top:20px;background:#04131e;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .pbi .bar{padding:12px 16px;background:#08283a;color:var(--cyan);font-weight:600}
+    .framebox{aspect-ratio:16/9;position:relative;display:grid;place-items:center}
+    iframe{width:100%;height:100%;border:0;display:none}
+    .placeholder{text-align:center;max-width:720px;padding:40px;color:var(--muted)}
+    .placeholder strong{display:block;color:white;font-size:24px;margin-bottom:10px}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .chip{border:1px solid var(--line);background:#092638;border-radius:8px;padding:8px 12px;color:#dffcff}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:20px 0}
+    a.btn{display:inline-block;background:var(--cyan);color:#00212d;text-decoration:none;font-weight:700;padding:11px 15px;border-radius:8px;margin:8px 8px 0 0}
+    a.btn.alt{background:transparent;color:var(--cyan);border:1px solid var(--cyan)}
+    footer{border-top:1px solid var(--line);margin-top:26px;padding:20px 0;color:var(--muted);font-size:13px}
+    code{color:#ffe280}
+    @media(max-width:900px){.hero,.grid{grid-template-columns:1fr}.kpis{grid-template-columns:1fr}.wrap{padding:14px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>OBSERVATORIO DE <span>COMBUSTIBLES CHILE</span></h1>
+    <div class="sub">Datos reales para tomar mejores decisiones sobre costos, territorio y movilidad.</div>
+  </header>
+
+  <section class="hero">
+    <div class="card">
+      <h2>¿Qué es este proyecto?</h2>
+      <p>Herramienta de análisis construida con datos históricos oficiales de la Comisión Nacional de Energía (CNE), normalizados mediante un proceso ETL y modelados para Power BI.</p>
+      <div class="filters">
+        <span class="chip">Período</span><span class="chip">Combustible</span><span class="chip">Región</span><span class="chip">Comuna</span><span class="chip">Empresa</span>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><b>2012-2026</b><small>Período consolidado</small></div>
+        <div class="kpi"><b>5.373.956</b><small>Registros consolidados</small></div>
+        <div class="kpi"><b>Power BI</b><small>Visualización interactiva</small></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Preguntas del observatorio</h2>
+      <p>¿Cómo ha cambiado el precio?</p>
+      <p>¿Dónde conviene cargar combustible?</p>
+      <p>¿Qué brecha existe entre estaciones?</p>
+      <p>¿El autoservicio realmente significa pagar menos?</p>
+      <a class="btn alt" href="https://github.com/nburgosfigueroa-bit/observatorio-combustible-chile" target="_blank">Ver repositorio</a>
+    </div>
+  </section>
+
+  <section class="pbi">
+    <div class="bar">Dashboard interactivo Power BI</div>
+    <div class="framebox">
+      <iframe id="powerbiFrame" allowfullscreen="true"></iframe>
+      <div class="placeholder" id="placeholder">
+        <strong>Versión interactiva lista para conectar</strong>
+        Para conservar exactamente los mismos segmentadores y filtros del informe, esta página está preparada para insertar el código de <b>Power BI - Publicar en la web</b>.<br><br>
+        Cuando se agregue la URL pública, el informe se cargará aquí sin cambiar su lógica ni sus parámetros.
+      </div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Metodología</h2>
+      <p><b>Extract:</b> lectura de archivos históricos CNE.</p>
+      <p><b>Transform:</b> auditoría, homologación, limpieza y normalización.</p>
+      <p><b>Load:</b> DuckDB, Parquet y tablas analíticas mensuales.</p>
+      <p><b>Visualización:</b> Power BI con modelo dimensional y medidas DAX.</p>
+    </div>
+    <div class="card">
+      <h2>Fuente</h2>
+      <p>Comisión Nacional de Energía (CNE) - Energía Abierta / Bencina en Línea.</p>
+      <a class="btn" href="https://energiaabierta.cl/datasets-estadistica/precios-historicos-de-bencina-en-linea/" target="_blank">Abrir fuente oficial</a>
+      <a class="btn alt" href="../README.md">Ver documentación</a>
+    </div>
+  </section>
+
+  <footer>
+    Proyecto de Nicolás Burgos Figueroa · Observatorio de Combustibles Chile · Información para decisiones que mueven a Chile.
+  </footer>
+</div>
+
+<script>
+  // Cuando exista la URL de "Publicar en la web" de Power BI,
+  // pégala entre las comillas:
+  const POWER_BI_PUBLIC_URL = "";
+
+  if (POWER_BI_PUBLIC_URL) {
+    const frame = document.getElementById("powerbiFrame");
+    frame.src = POWER_BI_PUBLIC_URL;
+    frame.style.display = "block";
+    document.getElementById("placeholder").style.display = "none";
+  }
+</script>
+</body>
+</html>
